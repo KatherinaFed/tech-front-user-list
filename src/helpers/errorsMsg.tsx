@@ -1,5 +1,3 @@
-import React from 'react';
-
 function errorsMsg(
   errorName: string | undefined,
   touchedName: boolean | undefined

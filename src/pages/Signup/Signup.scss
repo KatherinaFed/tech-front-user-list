@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 16px;
-    width: 468px;
+    width: 100%;
     gap: 16px;
 
     h2 {
@@ -86,5 +86,11 @@
         background-color: purple;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .signup_container {
+    width: 343px;
   }
 }

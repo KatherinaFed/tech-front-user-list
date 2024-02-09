@@ -25,6 +25,7 @@
       margin-top: 10px;
 
       .signup_group {
+        position: relative;
         label {
           display: flex;
           flex-direction: column;
@@ -42,6 +43,13 @@
           box-sizing: border-box;
         }
         input:focus {
+          color: gray;
+        }
+
+        .password_toggle {
+          position: absolute;
+          right: 10px;
+          top: 46px;
           color: gray;
         }
       }

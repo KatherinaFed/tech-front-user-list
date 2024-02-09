@@ -3,12 +3,18 @@
   height: 519px;
   background-color: #fff;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .signup_wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 16px;
+    width: 468px;
+    gap: 16px;
 
     h2 {
       color: black;
@@ -20,36 +26,44 @@
     form {
       display: flex;
       flex-direction: column;
-      gap: 20px;
       width: 100%;
-      margin-top: 10px;
 
       .signup_group {
-        position: relative;
+        margin-bottom: 16px;
+
         label {
+          position: relative;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 8px;
-          font-size: 16px;
+          font-size: 14px;
           cursor: pointer;
-        }
-        input {
-          width: 100%;
-          padding: 15px;
-          border: none;
-          border: 1px solid #ccc;
-          border-radius: 10px;
-          box-sizing: border-box;
-        }
-        input:focus {
-          color: gray;
+
+          input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-top: 8px;
+          }
+
+          input:focus {
+            outline: none;
+            color: gray;
+          }
+
+          .error_msg {
+            color: red;
+            font-size: x-small;
+            margin-top: 4px;
+          }
         }
 
         .password_toggle {
           position: absolute;
           right: 10px;
-          top: 46px;
+          top: 44px;
           color: gray;
         }
       }
@@ -58,12 +72,18 @@
         width: 100%;
         padding: 15px;
         border: none;
-        border: 1px solid #ccc;
         border-radius: 10px;
         box-sizing: border-box;
         background-color: mediumpurple;
         color: #fff;
         font-size: medium;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 16px;
+      }
+
+      button:hover {
+        background-color: purple;
       }
     }
   }

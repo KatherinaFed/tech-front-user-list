@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import './Signup.scss';
-import { formValidation } from '../../helpers/formValidation';
+import { formSignupValidation } from '../../helpers/formValidation';
 import errorsMsg from '../../helpers/errorsMsg';
 
 interface Toggle {
@@ -38,7 +38,7 @@ function Signup() {
 
   const { handleChange, handleSubmit, values, touched, errors } = useFormik({
     initialValues,
-    validationSchema: formValidation,
+    validationSchema: formSignupValidation,
     onSubmit: (values) => {
       console.log(values);
     },

@@ -1,11 +1,12 @@
-
 import { Navigate, useOutlet } from 'react-router-dom';
+import { useAppSelector } from '../app/hooks';
 
 function PublicLayout() {
-  const userCredentials = localStorage.getItem('userCredentials')
-  const outlet = useOutlet(); // children routes
+  const { isAuth } = useAppSelector((state) => state.auth);
 
-  if (userCredentials) {
+  const outlet = useOutlet(); // children routes
+  console.log(isAuth);
+  if (isAuth) {
     return <Navigate to="/" replace={true} />;
   }
 

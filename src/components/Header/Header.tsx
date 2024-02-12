@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import './Header.scss';
 import { useAppDispatch } from '../../app/hooks';
 import { logout } from '../../features/authSlice';

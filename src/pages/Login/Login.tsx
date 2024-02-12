@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { formLoginValidation } from '../../helpers/formValidation';
 import errorsMsg from '../../helpers/errorsMsg';
 import { Link } from 'react-router-dom';
-import './Login.scss'
+import './Login.scss';
 import { useLoginMutation } from '../../service/authApi';
 import { useAppDispatch } from '../../app/hooks';
 import { setCredentials } from '../../features/authSlice';
@@ -26,14 +26,19 @@ function Login() {
   const { handleChange, handleSubmit, values, touched, errors } = useFormik({
     initialValues,
     validationSchema: formLoginValidation,
-    onSubmit: (values) => {
-      login(values)
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        setSubmitting(true);
+        await login(values);
+      } finally {
+        setSubmitting(false);
+      }
     },
   });
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setCredentials(data));
+      dispatch(setCredentials({ token: data.token, isAuth: true }));
     }
   }, [isSuccess]);
 

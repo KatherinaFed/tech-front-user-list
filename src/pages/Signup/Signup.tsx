@@ -57,7 +57,9 @@ function Signup() {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setCredentials(data));
+      dispatch(
+        setCredentials({ id: data.id, token: data.token, isAuth: true })
+      );
     }
   }, [isSuccess]);
 

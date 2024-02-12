@@ -1,10 +1,11 @@
 import { Navigate, useOutlet } from 'react-router-dom';
+import { useAppSelector } from '../app/hooks';
 
 function PrivateLayout() {
-  const userCredentials = localStorage.getItem('userCredentials')
+  const { isAuth } = useAppSelector((state) => state.auth);
   const outlet = useOutlet(); // children routes
-
-  if (!userCredentials) {
+  
+  if (!isAuth) {
     return <Navigate to="/login" replace={true} />;
   }
 

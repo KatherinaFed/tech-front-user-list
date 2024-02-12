@@ -1,13 +1,15 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface AuthState {
-  id: string | null;
+  id?: string | null;
   token: string | null;
+  isAuth: boolean;
 }
 
 const initialState: AuthState = {
   id: null,
   token: null,
+  isAuth: localStorage.getItem('userCredentials') ? true : false,
 };
 
 export const authSlice = createSlice({
@@ -16,7 +18,7 @@ export const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      action: PayloadAction<{ id: string; token: string }>
+      action: PayloadAction<{ id?: string; token: string; isAuth: boolean }>
     ) => {
       localStorage.setItem(
         'userCredentials',
@@ -26,13 +28,18 @@ export const authSlice = createSlice({
         })
       );
 
-      state.id = action.payload.id;
-      state.token = action.payload.token;
+      return {
+        ...state,
+        id: action.payload.id,
+        token: action.payload.token,
+        isAuth: action.payload.isAuth,
+      };
     },
     logout: (state) => {
       localStorage.clear();
       state.id = null;
       state.token = null;
+      state.isAuth = false;
     },
   },
 });

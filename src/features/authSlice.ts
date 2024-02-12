@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface AuthState {
-  id?: string | null;
+  id?: number | null;
   token: string | null;
   isAuth: boolean;
 }
@@ -18,7 +18,7 @@ export const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      action: PayloadAction<{ id?: string; token: string; isAuth: boolean }>
+      action: PayloadAction<{ id?: number; token: string; isAuth: boolean }>
     ) => {
       localStorage.setItem(
         'userCredentials',

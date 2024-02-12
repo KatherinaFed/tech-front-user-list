@@ -23,7 +23,7 @@ export const usersApi = createApi({
   }),
   endpoints: (build) => ({
     getListUsers: build.query<ListResponse<User>, number | void>({
-      query: (page = 1) => ({
+      query: (page) => ({
         url: `/users?page=${page}`,
         params: {
           per_page: 4,

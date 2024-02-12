@@ -4,7 +4,7 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  
+
   .team_container {
     display: flex;
     margin-top: 20px;
@@ -20,6 +20,25 @@
       justify-content: flex-start;
       align-items: center;
       gap: 16px;
+    }
+  }
+
+  .load_more_wrapper {
+    margin: 10px;
+    
+    button {
+      padding: 8px 16px;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      box-sizing: border-box;
+      background-color: #512689;
+      color: #fff;
+      font-size: medium;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #643a9b;
     }
   }
 }

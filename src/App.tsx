@@ -11,14 +11,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route element={<PrivateLayout />}> */}
+        <Route element={<PrivateLayout />}>
         <Route path="/" element={<OurTeam />} />
         <Route path="users/:id" element={<User />} />
-        {/* </Route> */}
-        {/* <Route element={<PublicLayout />}> */}
+        </Route>
+        <Route element={<PublicLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-        {/* </Route> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { AppStore } from '../../app/store';
+import { AppStore } from '../app/store';
 
 interface AuthState {
   id: string | null;
@@ -37,7 +37,6 @@ export const authSlice = createSlice({
     },
   },
 });
-
 
 export const { setCredentials, logout } = authSlice.actions;
 export default authSlice.reducer;

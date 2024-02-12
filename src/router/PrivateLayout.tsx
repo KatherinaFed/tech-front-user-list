@@ -1,8 +1,14 @@
-import React from 'react';
-import { useOutlet } from 'react-router-dom';
+import { Navigate, useOutlet } from 'react-router-dom';
+import { useAuth } from '../app/hooks';
 
 function PrivateLayout() {
-  const outlet = useOutlet();
+  const { isAuth } = useAuth();
+  const outlet = useOutlet(); // children routes
+
+  if (!isAuth) {
+    return <Navigate to="/login" replace={true} />;
+  }
+
   return <>{outlet}</>;
 }
 

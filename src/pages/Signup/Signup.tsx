@@ -5,7 +5,7 @@ import errorsMsg from '../../helpers/errorsMsg';
 import './Signup.scss';
 import { useRegisterMutation } from '../../service/authApi';
 import { useAppDispatch, useAuth } from '../../app/hooks';
-import { setCredentials } from '../../features/auth/authSlice';
+import { setCredentials } from '../../features/authSlice';
 
 interface Toggle {
   password: boolean;

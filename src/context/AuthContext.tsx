@@ -15,23 +15,23 @@ interface AuthProps {
 interface AuthValues {
   isAuth: boolean;
   setIsAuth: (value: boolean) => void;
-  logout: () => void;
+  // logout: () => void;
 }
 
 export const AuthContext = createContext({} as AuthValues);
 
 export const AuthProvider = ({ children }: AuthProps) => {
   const [isAuth, setIsAuth] = useState<boolean>(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const logout = () => {
-    setIsAuth(false);
-    localStorage.clear();
-    navigate('/login', { replace: true });
-  };
+  // const logout = () => {
+  //   setIsAuth(false);
+  //   localStorage.clear();
+  //   navigate('/login', { replace: true });
+  // };
 
   return (
-    <AuthContext.Provider value={{ isAuth, setIsAuth, logout }}>
+    <AuthContext.Provider value={{ isAuth, setIsAuth }}>
       {children}
     </AuthContext.Provider>
   );

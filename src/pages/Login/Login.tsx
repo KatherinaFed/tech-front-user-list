@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { formLoginValidation } from '../../helpers/formValidation';
 import errorsMsg from '../../helpers/errorsMsg';
 import { Link } from 'react-router-dom';
 import './Login.scss'
 import { useLoginMutation } from '../../service/authApi';
+import { useAppDispatch } from '../../app/hooks';
+import { setCredentials } from '../../features/authSlice';
 
 interface FormValues {
   email: string;
@@ -13,7 +15,8 @@ interface FormValues {
 
 function Login() {
   const [toggle, setToggle] = useState<boolean>(false);
-  const [login] = useLoginMutation();
+  const [login, { data, isSuccess, isError }] = useLoginMutation();
+  const dispatch = useAppDispatch();
 
   const initialValues: FormValues = {
     email: '',
@@ -27,6 +30,12 @@ function Login() {
       login(values)
     },
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setCredentials(data));
+    }
+  }, [isSuccess]);
 
   return (
     <div className="login_container">

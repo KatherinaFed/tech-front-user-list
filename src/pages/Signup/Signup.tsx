@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { formSignupValidation } from '../../helpers/formValidation';
 import errorsMsg from '../../helpers/errorsMsg';
 import './Signup.scss';
 import { useRegisterMutation } from '../../service/authApi';
-import { useAppDispatch, useAuth } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 import { setCredentials } from '../../features/authSlice';
 
 interface Toggle {
@@ -27,7 +27,6 @@ function Signup() {
 
   const [register, { data, isSuccess, isError }] = useRegisterMutation();
   const dispatch = useAppDispatch();
-  const { setIsAuth } = useAuth();
 
   const handleToggle = (field: keyof Toggle) => {
     setToggle((prev) => ({
@@ -46,17 +45,21 @@ function Signup() {
   const { handleChange, handleSubmit, values, touched, errors } = useFormik({
     initialValues,
     validationSchema: formSignupValidation,
-    onSubmit: async (values) => {
-      await register(values);
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        setSubmitting(true);
+        await register(values);
+      } finally {
+        setSubmitting(false);
+      }
     },
   });
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(setCredentials(data));
-      setIsAuth(true);
     }
-  }, [isSuccess, data]);
+  }, [isSuccess]);
 
   return (
     <div className="signup_container">

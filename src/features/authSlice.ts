@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { AppStore } from '../app/store';
 
 interface AuthState {
   id: string | null;
@@ -20,7 +19,7 @@ export const authSlice = createSlice({
       action: PayloadAction<{ id: string; token: string }>
     ) => {
       localStorage.setItem(
-        'user',
+        'userCredentials',
         JSON.stringify({
           id: action.payload.id,
           token: action.payload.token,

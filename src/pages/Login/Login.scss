@@ -1,0 +1,101 @@
+.login_container {
+  width: 500px;
+  height: 519px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+
+  .login_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    width: 100%;
+    gap: 16px;
+
+    h2 {
+      color: black;
+      font-size: 20px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .login_group {
+        margin-bottom: 16px;
+
+        label {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          font-size: 14px;
+          cursor: pointer;
+
+          input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-top: 8px;
+          }
+
+          input:focus {
+            outline: none;
+            color: gray;
+          }
+
+          .error_msg {
+            color: red;
+            font-size: x-small;
+            margin-top: 4px;
+          }
+        }
+
+        .password_toggle {
+          position: absolute;
+          right: 10px;
+          top: 44px;
+          color: gray;
+        }
+      }
+
+      .login_to_singup {
+        
+      }
+
+      button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: #512689;
+        color: #fff;
+        font-size: medium;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 16px;
+      }
+
+      button:hover {
+        background-color: #643a9b;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .login_container {
+    width: 343px;
+  }
+}

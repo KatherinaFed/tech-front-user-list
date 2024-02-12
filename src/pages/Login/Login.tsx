@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import { formLoginValidation } from '../../helpers/formValidation';
 import errorsMsg from '../../helpers/errorsMsg';
+import { Link } from 'react-router-dom';
+import './Login.scss'
+import { useLoginMutation } from '../../service/authApi';
 
 interface FormValues {
   email: string;
@@ -10,6 +13,7 @@ interface FormValues {
 
 function Login() {
   const [toggle, setToggle] = useState<boolean>(false);
+  const [login] = useLoginMutation();
 
   const initialValues: FormValues = {
     email: '',
@@ -20,7 +24,7 @@ function Login() {
     initialValues,
     validationSchema: formLoginValidation,
     onSubmit: (values) => {
-      console.log(values);
+      login(values)
     },
   });
 
@@ -56,16 +60,16 @@ function Login() {
               />
               <i
                 onClick={() => setToggle(!toggle)}
-                className={`fa fa-eye${
-                  toggle ? '' : '-slash'
-                } password_toggle`}
+                className={`fa fa-eye${toggle ? '' : '-slash'} password_toggle`}
                 aria-hidden="true"
               ></i>
               {errorsMsg(errors.password, touched.password)}
             </label>
           </div>
-          
-          <button type="button">Войти</button>
+          <div className="login_to_singup">
+            Новый пользователь? <Link to={'/signup'}>Зарегистрируйтесь</Link>
+          </div>
+          <button type="submit">Войти</button>
         </form>
       </div>
     </div>

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
-import './Signup.scss';
 import { formSignupValidation } from '../../helpers/formValidation';
 import errorsMsg from '../../helpers/errorsMsg';
+import './Signup.scss';
+import { useRegisterMutation } from '../../service/authApi';
+import { useAppDispatch, useAuth } from '../../app/hooks';
+import { setCredentials } from '../../features/auth/authSlice';
 
 interface Toggle {
   password: boolean;
@@ -22,6 +25,10 @@ function Signup() {
     confPassword: false,
   });
 
+  const [register, { data, isSuccess, isError }] = useRegisterMutation();
+  const dispatch = useAppDispatch();
+  const { setIsAuth } = useAuth();
+
   const handleToggle = (field: keyof Toggle) => {
     setToggle((prev) => ({
       ...prev,
@@ -39,10 +46,17 @@ function Signup() {
   const { handleChange, handleSubmit, values, touched, errors } = useFormik({
     initialValues,
     validationSchema: formSignupValidation,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      await register(values);
     },
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setCredentials(data));
+      setIsAuth(true);
+    }
+  }, [isSuccess, data]);
 
   return (
     <div className="signup_container">
@@ -118,7 +132,7 @@ function Signup() {
               {errorsMsg(errors.confirmPassword, touched.confirmPassword)}
             </label>
           </div>
-          <button type="button">Зарегистрироваться</button>
+          <button type="submit">Зарегистрироваться</button>
         </form>
       </div>
     </div>

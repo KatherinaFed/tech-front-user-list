@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-interface User {
+export interface User {
   id: number;
   email: string;
   first_name: string;
@@ -25,6 +25,9 @@ export const usersApi = createApi({
     getListUsers: build.query<ListResponse<User>, number | void>({
       query: (page = 1) => ({
         url: `/users?page=${page}`,
+        params: {
+          per_page: 4,
+        },
       }),
     }),
   }),

@@ -1,3 +1,39 @@
 .user_container {
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: left;
+  gap: 10rem;
+
+  .user_description {
+    max-width: 630px;
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .user_contacts {
+    margin-top: 20px;
+    padding: 10px;
+
+    img {
+      width: 24px;
+    }
+
+    .user_phone_number {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .user_email {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
 }

@@ -17,10 +17,9 @@ function User() {
     return <h1>Loading...</h1>;
   }
 
-  // if (isError) {
-  //   console.log(error);
-  //   return <div>{error}</div>;
-  // }
+  if (isError) {
+    console.log(error);
+  }
 
   return (
     <div className="user_container">

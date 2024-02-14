@@ -1,5 +1,4 @@
 import './OurTeam.scss';
-import Header from '../Header/Header';
 import UserCard from '../UserCard/UserCard';
 import { User, useGetListUsersQuery } from '../../service/usersApi';
 import { useEffect, useState } from 'react';

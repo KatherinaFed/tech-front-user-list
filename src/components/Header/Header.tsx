@@ -1,15 +1,13 @@
 import './Header.scss';
 import { useAppDispatch } from '../../app/hooks';
 import { logout } from '../../features/authSlice';
-import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/login');
   };
 
   return (

@@ -1,6 +1,6 @@
 import './OurTeam.scss';
-import Header from '../../components/Header/Header';
-import UserCard from '../../components/UserCard/UserCard';
+import Header from '../Header/Header';
+import UserCard from '../UserCard/UserCard';
 import { User, useGetListUsersQuery } from '../../service/usersApi';
 import { useEffect, useState } from 'react';
 
@@ -30,7 +30,6 @@ function OurTeam() {
 
   return (
     <section className="team_section">
-      <Header />
       <div className="team_container">
         <div className="team_wrapper">
           {users.map((user: User) => (

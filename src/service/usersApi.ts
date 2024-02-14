@@ -8,12 +8,16 @@ export interface User {
   avatar: string;
 }
 
-interface ListResponse<T> {
+interface ListResponse {
   page: number;
   per_page: number;
   total: number;
   total_pages: number;
-  data: T[];
+  data: User[];
+}
+
+interface UserResponse {
+  data: User;
 }
 
 export const usersApi = createApi({
@@ -22,7 +26,7 @@ export const usersApi = createApi({
     baseUrl: 'https://reqres.in/api',
   }),
   endpoints: (build) => ({
-    getListUsers: build.query<ListResponse<User>, number | void>({
+    getListUsers: build.query<ListResponse, number | null>({
       query: (page) => ({
         url: `/users?page=${page}`,
         params: {
@@ -30,7 +34,12 @@ export const usersApi = createApi({
         },
       }),
     }),
+    getUserById: build.query<UserResponse, string | undefined>({
+      query: (id) => ({
+        url: `/users/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetListUsersQuery } = usersApi;
+export const { useGetListUsersQuery, useGetUserByIdQuery } = usersApi;

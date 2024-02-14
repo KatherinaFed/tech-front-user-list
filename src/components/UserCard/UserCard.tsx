@@ -4,14 +4,19 @@ import notLiked from '../../assets/icon_heart_empty.png';
 import Liked from '../../assets/icon_heart_filled.png';
 import { useState } from 'react';
 import { User } from '../../service/usersApi';
+import { useNavigate } from 'react-router-dom';
 
 function UserCard({ user }: { user: User }) {
   const [isLiked, setIsLiked] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const likedIcon = isLiked ? Liked : notLiked;
 
   return (
-    <div className="user_card_container">
+    <div
+      className="user_card_container"
+      onClick={() => navigate(`users/${user.id}`)}
+    >
       <div className="user_avatar">
         <img src={user ? user.avatar : noAvatar} alt="user_avatar" />
       </div>

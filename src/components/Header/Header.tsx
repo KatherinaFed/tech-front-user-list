@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../app/hooks';
 import { logout } from '../../features/authSlice';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useGetUserByIdQuery } from '../../service/usersApi';
+import signoutIcon from '../../assets/icon_signout_button.png';
 
 function Header() {
   const navigate = useNavigate();
@@ -29,12 +30,18 @@ function Header() {
             </div>
           )}
           <div className="right_btn">
-            <button type="button" onClick={handleLogout}>
+            <span onClick={handleLogout} className="signout_btn_mobi">
+              <img src={signoutIcon} alt="signout_icon" />
+            </span>
+            <button
+              className="signout_btn"
+              type="button"
+              onClick={handleLogout}
+            >
               Выход
             </button>
           </div>
         </div>
-        {/* <div className="header_content"> */}
         {id ? (
           <div className="header_content_user">
             <div className="header_user">
@@ -53,13 +60,12 @@ function Header() {
               <h1>Наша команда</h1>
               <h2>
                 Это опытные специалисты, хорошо разбирающиеся во всех задачах,
-                которые ложатся <br /> на их плечи, и умеющие находить выход из
-                любых, даже самых сложных ситуаций.
+                которые ложатся на их плечи, и умеющие находить выход из любых,
+                даже самых сложных ситуаций.
               </h2>
             </div>
           </div>
         )}
-        {/* </div> */}
       </div>
     </div>
   );

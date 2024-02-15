@@ -43,7 +43,7 @@ function OurTeam() {
           onClick={handleLoadMore}
           disabled={isLoading || isFetching}
         >
-          {isLoading ? 'Загрузка...' : 'Показать больше'}
+          {isLoading ? 'Загрузка...' : 'Показать еще'}
         </button>
       </div>
     </section>

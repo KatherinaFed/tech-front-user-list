@@ -16,6 +16,7 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      width: 100%;
       // justify-content: center;
       justify-content: flex-start;
       align-items: center;
@@ -25,20 +26,31 @@
 
   .load_more_wrapper {
     margin: 10px;
-    
+
     button {
       padding: 8px 16px;
       border: 1px solid #fff;
       border-radius: 10px;
       box-sizing: border-box;
-      background-color: #512689;
-      color: #fff;
+      border: 1px solid black;
+      color: black;
       font-size: medium;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: #643a9b;
+      background-color: #ebe8ee;
+    }
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .team_section {
+    .team_container {
+      .team_wrapper {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

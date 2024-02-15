@@ -15,6 +15,7 @@ function OurTeam() {
     }
   }, [data]);
 
+
   const handleLoadMore = () => {
     setCurrentPage((prev) => prev + 1);
   };

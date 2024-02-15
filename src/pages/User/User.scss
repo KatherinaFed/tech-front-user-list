@@ -19,21 +19,13 @@
       width: 24px;
     }
 
-    .user_phone_number {
+    .user_contact_info {
       display: flex;
       flex-direction: row;
       align-content: center;
       justify-content: flex-start;
       gap: 10px;
       margin-bottom: 10px;
-    }
-
-    .user_email {
-      display: flex;
-      flex-direction: row;
-      align-content: center;
-      justify-content: center;
-      gap: 10px;
     }
   }
 }

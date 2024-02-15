@@ -1,6 +1,6 @@
 import './User.scss';
 import { useGetUserByIdQuery } from '../../service/usersApi';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import mailIcon from '../../assets/icon_mail.png';
 import phoneIcon from '../../assets/icon_phone.png';
 
@@ -47,11 +47,11 @@ function User() {
         бизнес-проектов.
       </div>
       <div className="user_contacts">
-        <div className="user_phone_number">
+        <div className="user_contact_info">
           <img src={phoneIcon} alt="phone_icon" />
           +7 (954) 333-44-55
         </div>
-        <div className="user_email">
+        <div className="user_contact_info">
           <img src={mailIcon} alt="mail_icon" />
           {userData?.data.email}
         </div>

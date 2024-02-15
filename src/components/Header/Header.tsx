@@ -23,7 +23,7 @@ function Header() {
         <div className="header_buttons">
           {pathname !== '/' && (
             <div className="left_btn">
-              <button type="button" onClick={() => navigate('/')}>
+              <button type="button" onClick={() => navigate(-1)}>
                 Назад
               </button>
             </div>
@@ -34,8 +34,9 @@ function Header() {
             </button>
           </div>
         </div>
-        <div className="header_content">
-          {id ? (
+        {/* <div className="header_content"> */}
+        {id ? (
+          <div className="header_content_user">
             <div className="header_user">
               <div className="header_user_avatar">
                 <img src={data?.data.avatar} alt="user_avatar" />
@@ -45,7 +46,9 @@ function Header() {
                 <p>Партнер</p>
               </div>
             </div>
-          ) : (
+          </div>
+        ) : (
+          <div className="header_content_main">
             <div className="header_main">
               <h1>Наша команда</h1>
               <h2>
@@ -54,8 +57,9 @@ function Header() {
                 любых, даже самых сложных ситуаций.
               </h2>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+        {/* </div> */}
       </div>
     </div>
   );

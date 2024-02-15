@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 10px;
 
   .header_wrapper {
     display: flex;
@@ -47,9 +48,10 @@
       }
     }
 
-    .header_content {
-      width: 846px;
-      text-align: center;
+    .header_content_user {
+      display: flex;
+      // width: 846px;
+      width: 1000px;
       margin: auto;
 
       .header_user {
@@ -74,6 +76,9 @@
           align-items: flex-start;
 
           h1 {
+            font-size: 64px;
+            font-weight: 400;
+            color: #fff;
             margin: 0;
             padding: 0;
           }
@@ -86,18 +91,22 @@
           }
         }
       }
+    }
 
-      h1 {
-        font-size: 64px;
-        font-weight: 400;
-        color: #fff;
-        margin: auto;
-      }
+    .header_content_main {
+      .header_main {
+        h1 {
+          font-size: 64px;
+          font-weight: 400;
+          color: #fff;
+          margin: auto;
+        }
 
-      h2 {
-        font-size: 20px;
-        font-weight: 400;
-        color: #fff;
+        h2 {
+          font-size: 20px;
+          font-weight: 400;
+          color: #fff;
+        }
       }
     }
   }

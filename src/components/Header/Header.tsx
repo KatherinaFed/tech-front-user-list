@@ -4,6 +4,7 @@ import { logout } from '../../features/authSlice';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useGetUserByIdQuery } from '../../service/usersApi';
 import signoutIcon from '../../assets/icon_signout_button.png';
+import backIcon from '../../assets/icon_back_btn.png';
 
 function Header() {
   const navigate = useNavigate();
@@ -24,7 +25,14 @@ function Header() {
         <div className="header_buttons">
           {pathname !== '/' && (
             <div className="left_btn">
-              <button type="button" onClick={() => navigate(-1)}>
+              <span onClick={() => navigate(-1)} className="back_btn_mobi">
+                <img src={backIcon} alt="back_icon" />
+              </span>
+              <button
+                className="back_btn"
+                type="button"
+                onClick={() => navigate(-1)}
+              >
                 Назад
               </button>
             </div>

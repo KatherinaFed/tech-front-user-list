@@ -1,5 +1,11 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 #root {
-  max-width: 1440px;
+  width: 1440px;
   margin: 0 auto;
   text-align: center;
 }

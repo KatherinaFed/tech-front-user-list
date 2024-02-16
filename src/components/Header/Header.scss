@@ -167,13 +167,16 @@
 
       .header_content_user {
         width: auto;
+
         .header_user {
           display: flex;
           flex-direction: column-reverse;
           align-items: center;
+          
           .header_user_name {
             display: flex;
             align-items: center;
+
             h1 {
               font-size: 36px;
             }

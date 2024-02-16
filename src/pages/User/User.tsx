@@ -1,6 +1,6 @@
 import './User.scss';
 import { useGetUserByIdQuery } from '../../service/usersApi';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import mailIcon from '../../assets/icon_mail.png';
 import phoneIcon from '../../assets/icon_phone.png';
 

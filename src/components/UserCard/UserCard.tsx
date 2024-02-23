@@ -2,15 +2,21 @@ import './UserCard.scss';
 import noAvatar from '../../assets/no_user_avatar.png';
 import notLiked from '../../assets/icon_heart_empty.png';
 import Liked from '../../assets/icon_heart_filled.png';
-import { useState } from 'react';
 import { User } from '../../service/usersApi';
 import { useNavigate } from 'react-router-dom';
+import { useLocalStorage } from '../../app/hooks';
 
 function UserCard({ user }: { user: User }) {
-  const [isLiked, setIsLiked] = useState<boolean>(false);
   const navigate = useNavigate();
+  const [active, setActive] = useLocalStorage(`${user.id}`, 'false');
 
-  const likedIcon = isLiked ? Liked : notLiked;
+  const likedIcon = active === 'true' ? Liked : notLiked;
+
+  const handleLike = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    setActive((prevActive) => (prevActive === 'false' ? 'true' : 'false'));
+  };
 
   return (
     <div
@@ -27,11 +33,7 @@ function UserCard({ user }: { user: User }) {
       </div>
       <div className="user_like">
         <span>
-          <img
-            src={likedIcon}
-            alt="like_icon"
-            onClick={() => setIsLiked(!isLiked)}
-          />
+          <img src={likedIcon} alt="like_icon" onClick={handleLike} />
         </span>
       </div>
     </div>

@@ -57,7 +57,9 @@ function Header() {
                 <img src={data?.data.avatar} alt="user_avatar" />
               </div>
               <div className="header_user_name">
-                <h1>{`${data?.data.first_name} ${data?.data.last_name}`}</h1>
+                <h1>
+                  {data?.data.first_name} {data?.data.last_name}
+                </h1>
                 <p>Партнер</p>
               </div>
             </div>
